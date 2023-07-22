@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup, Tag, NavigableString, Comment
-from requests_html import HTMLSession
 import pandas as pd
 import itertools
 
 import numpy as np
-import numbers
 import re
 import pandas as pd
 from abc import ABC, abstractmethod

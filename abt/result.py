@@ -1,7 +1,6 @@
 from pydoc import TextRepr
 import requests
 from bs4 import BeautifulSoup, Tag, NavigableString, Comment
-from requests_html import HTMLSession
 import pandas as pd
 from tqdm import tqdm
 import itertools
