@@ -92,10 +92,17 @@ class NKBJRAShutsuba(Shutsuba):
         tag = row_tag.find('td', class_='Weight')
         if isinstance(tag, Tag):
             weight = tag.get_text().lstrip().rstrip('\n')
-            weightChange = int(weight[weight.find('(')+1:weight.find(')')].lstrip().rstrip('\n'))
+            try:
+                weightChange = int(weight[weight.find('(')+1:weight.find(')')].lstrip().rstrip('\n'))
+            except:
+                weightChange = np.nan
             horseWeight = weight[:weight.find('(')]
             sign = -1 if '-' in horseWeight else 1
-            horseWeight = sign* int(re.findall(r'\d+', horseWeight)[0].lstrip().rstrip('\n'))
+            try:
+                horseWeight = sign* int(re.findall(r'\d+', horseWeight)[0].lstrip().rstrip('\n'))
+            except:
+                horseWeight = np.nan
+            
             return {'weight': horseWeight,'weightChange':weightChange}
         else:
             return {'weight': np.nan, 'weightChange':np.nan}
