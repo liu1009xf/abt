@@ -50,7 +50,11 @@ class JRASchedule(Schedule):
       option = webdriver.ChromeOptions()
       option.add_argument('--headless')
 
-      browser = webdriver.Chrome(ChromeDriverManager().install(), options=option)
+      try:
+          browser = webdriver.Chrome(ChromeDriverManager().install(), options=option)
+      except:
+          service = webdriver.ChromeService(executable_path = ChromeDriverManager().install())
+          browser = webdriver.Chrome(service=service, options=option)
 
       # open jra page
       browser.get('https://www.jra.go.jp/')
