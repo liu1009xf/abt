@@ -6,6 +6,7 @@ import re
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup, Tag
 from urllib.parse import urljoin
@@ -53,7 +54,7 @@ class JRASchedule(Schedule):
       try:
           browser = webdriver.Chrome(ChromeDriverManager().install(), options=option)
       except:
-          service = webdriver.ChromeService(executable_path = ChromeDriverManager().install())
+          service = ChromeService(executable_path = ChromeDriverManager().install())
           browser = webdriver.Chrome(service=service, options=option)
 
       # open jra page
