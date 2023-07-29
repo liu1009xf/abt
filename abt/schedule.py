@@ -49,6 +49,7 @@ class JRASchedule(Schedule):
     def __access_entries(self) -> BeautifulSoup:
       # chromeを起動する
       option = webdriver.ChromeOptions()
+      option.add_argument('--no-sandbox')
       option.add_argument('--headless')
 
       try:
